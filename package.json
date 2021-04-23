@@ -9,8 +9,11 @@
   "np": {
     "contents": "lib"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
-    "release": "np --no-tests",
+    "release": "npx np --no-tests",
     "doc:publish": "cd documentation && GIT_USER=CourtHive USE_SSH=true yarn deploy"
   },
   "bin": {
