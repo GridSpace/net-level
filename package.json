@@ -7,7 +7,7 @@
   "private": false,
   "main": "index.js",
   "np": {
-    "contents": "."
+    "contents": "lib"
   },
   "scripts": {
     "release": "np --no-tests",
@@ -19,7 +19,7 @@
     "net-level-server": "./lib/server.js"
   },
   "files": [
-    "index.js",
+    "lib/index.js",
     "lib/cli.js",
     "lib/util.js",
     "lib/clone.js",
