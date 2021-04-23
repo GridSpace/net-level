@@ -1,1 +1,1 @@
-export { fourOhFour, miscErrors } from "./errorRoutes";
+export { fourOhFour, miscErrors } from './errorRoutes';
