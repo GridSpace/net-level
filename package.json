@@ -6,7 +6,11 @@
   "license": "MIT",
   "private": false,
   "main": "index.js",
+  "np": {
+    "contents": "."
+  },
   "scripts": {
+    "release": "np --no-tests",
     "doc:publish": "cd documentation && GIT_USER=CourtHive USE_SSH=true yarn deploy"
   },
   "bin": {
