@@ -5,9 +5,9 @@
   "author": "Stewart Allen <sa@grid.space>",
   "license": "MIT",
   "private": false,
-  "main": "index.js",
+  "main": "lib/index.js",
   "np": {
-    "contents": "lib"
+    "contents": "."
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -22,7 +22,7 @@
     "net-level-server": "./lib/server.js"
   },
   "files": [
-    "index.js",
+    "lib/index.js",
     "lib/cli.js",
     "lib/util.js",
     "lib/clone.js",
