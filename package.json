@@ -22,7 +22,7 @@
     "net-level-server": "./lib/server.js"
   },
   "files": [
-    "lib/index.js",
+    "index.js",
     "lib/cli.js",
     "lib/util.js",
     "lib/clone.js",
