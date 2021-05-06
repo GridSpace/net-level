@@ -17,7 +17,7 @@
     "doc:publish": "cd documentation && GIT_USER=CourtHive USE_SSH=true yarn deploy"
   },
   "bin": {
-    "net-level": "./lib/cli.js",
+    "net-level-cli": "./lib/cli.js",
     "net-level-clone": "./lib/clone.js",
     "net-level-server": "./lib/server.js"
   },
