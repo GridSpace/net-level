@@ -15,7 +15,7 @@
         "postpublish": "./script-post.sh"
     },
     "files": [
-		"index.js",
+        "index.js",
         "lib/cli.js",
         "lib/util.js",
         "lib/clone.js",
