@@ -1,6 +1,6 @@
 {
   "name": "@gridspace/net-level-client",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "client only to net-level server eliminates leveldb dependency",
   "author": "Stewart Allen <sa@grid.space>",
   "license": "MIT",
@@ -39,8 +39,8 @@
     "storage"
   ],
   "dependencies": {
-    "minimist": "^1.2.5",
-    "date-fns": "^2.19.0"
+    "date-fns": "^2.19.0",
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "np": "7.5.0"
