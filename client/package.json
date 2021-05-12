@@ -13,7 +13,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": {
-    "net-level-cli": "./lib/cli.js",
+    "net-level-cli": "./lib/client-cli.js",
     "net-level-clone": "./lib/clone.js"
   },
   "scripts": {
