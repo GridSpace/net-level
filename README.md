@@ -7,4 +7,4 @@ Net-level provides shared authenticated network-based access to leveldb instance
 - as scalable and robust as leveldb without in-process limitations.
 - adds simple user-based authentication and granular db-level permissions.
 
-[Online Documentation](gridspace.github.io/net-level)
+[Online Documentation](https://gridspace.github.io/net-level)
