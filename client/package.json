@@ -1,6 +1,6 @@
 {
   "name": "@gridspace/net-level-client",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "client only to net-level server eliminates leveldb dependency",
   "author": "Stewart Allen <sa@grid.space>",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": {
-    "net-level-cli": "./lib/cli.js",
-    "net-level-clone": "./lib/clone.js"
+    "net-level-cli": "lib/cli.js",
+    "net-level-clone": "lib/clone.js"
   },
   "scripts": {
     "prepare": "./script-pre.sh",
