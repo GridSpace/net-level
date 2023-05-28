@@ -56,7 +56,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
     "np": "7.5.0",
-    "prettier": "2.3.0",
+    "prettier": "2.8.8",
     "prettier-eslint": "12.0.0"
   }
 }
