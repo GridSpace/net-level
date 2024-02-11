@@ -24,7 +24,7 @@ DB_PASS=adminpass
 ## Start application server
 
 ```shell
-node -r esm index.js -p 8880
+node -r esm index.js -p 3333
 ```
 
 ## Run client
@@ -32,9 +32,9 @@ node -r esm index.js -p 8880
 Open a new terminal window...
 
 ```shell
-curl -X GET --url "http://localhost:8880/db/get?base=sandbox&key=hello"
+curl -X GET --url "http://localhost:3333/db/get?base=sandbox&key=hello"
 
-curl -X GET --url "http://localhost:8880/db/set?base=sandbox&key=hello&value=universe"
+curl -X GET --url "http://localhost:3333/db/set?base=sandbox&key=hello&value=universe"
 
-curl -X GET --url "http://localhost:8880/db/get?base=sandbox&key=hello"
+curl -X GET --url "http://localhost:3333/db/get?base=sandbox&key=hello"
 ```
