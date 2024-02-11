@@ -1,48 +1,48 @@
 {
-  "name": "@gridspace/net-level-client",
-  "version": "0.1.10",
-  "description": "client only to net-level server eliminates leveldb dependency",
-  "author": "Stewart Allen <sa@grid.space>",
-  "license": "MIT",
-  "private": false,
-  "main": "lib/client.js",
-  "np": {
-    "contents": "."
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
-  "bin": {
-    "net-level-cli": "lib/cli.js",
-    "net-level-clone": "lib/clone.js"
-  },
-  "scripts": {
-    "prepare": "./script-pre.sh",
-    "postpublish": "./script-post.sh",
-    "release": "npx np --no-tests"
-  },
-  "files": [
-    "index.js",
-    "lib/cli.js",
-    "lib/util.js",
-    "lib/clone.js",
-    "lib/client.js",
-    "package.json"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gridspace/net-level.git"
-  },
-  "keywords": [
-    "network",
-    "leveldb",
-    "storage"
-  ],
-  "dependencies": {
-    "date-fns": "^2.19.0",
-    "minimist": "^1.2.5"
-  },
-  "devDependencies": {
-    "np": "7.5.0"
-  }
+    "name": "@gridspace/net-level-client",
+    "version": "0.1.10",
+    "description": "client only to net-level server eliminates leveldb dependency",
+    "author": "Stewart Allen <sa@grid.space>",
+    "license": "MIT",
+    "private": false,
+    "main": "lib/client.js",
+    "np": {
+        "contents": "."
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "bin": {
+        "net-level-cli": "lib/cli.js",
+        "net-level-clone": "lib/clone.js"
+    },
+    "scripts": {
+        "prepare": "./script-pre.sh",
+        "postpublish": "./script-post.sh",
+        "release": "npx np --no-tests"
+    },
+    "files": [
+        "index.js",
+        "lib/cli.js",
+        "lib/util.js",
+        "lib/clone.js",
+        "lib/client.js",
+        "package.json"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gridspace/net-level.git"
+    },
+    "keywords": [
+        "network",
+        "leveldb",
+        "storage"
+    ],
+    "dependencies": {
+        "dayjs": "^1.11.10",
+        "minimist": "^1.2.8"
+    },
+    "devDependencies": {
+        "np": "9.2.0"
+    }
 }
