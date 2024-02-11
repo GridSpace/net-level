@@ -3,7 +3,9 @@
 ## Install
 
 ```shell
-yarn install
+pnpm i
+// or
+yarn
 // or
 npm install
 ```
