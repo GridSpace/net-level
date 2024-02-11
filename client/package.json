@@ -39,8 +39,8 @@
         "storage"
     ],
     "dependencies": {
-        "dayjs": "^1.11.10",
-        "minimist": "^1.2.8"
+        "dayjs": "1.11.10",
+        "minimist": "1.2.8"
     },
     "devDependencies": {
         "np": "9.2.0"
