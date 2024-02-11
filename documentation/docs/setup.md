@@ -8,7 +8,7 @@ slug: /setup
 ```shell
 yarn install
 // or
-npm iinstall
+npm install
 ```
 
 ## Start Net-Level Server
@@ -17,6 +17,12 @@ The default port for net-level is 3000. This may conflict with other processes, 
 
 ```shell
 node lib/server --user=admin --pass=adminpass --port 3333
+```
+
+Or you can use environment variables to seed the user and password
+
+```shell
+DB_USER=admin DB_PASS=adminpass node lib/server --port 3333
 ```
 
 Starting the server will create `data/.users` if it does not already exist and add (or update) the referenced user and password. Starting the server does not require a username and password provided if the `data/.users` file already exists.
