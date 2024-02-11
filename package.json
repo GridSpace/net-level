@@ -21,6 +21,9 @@
         "net-level-clone": "./lib/clone.js",
         "net-level-server": "./lib/server.js"
     },
+    "engines": {
+        "node": ">=20.10.0 < 21"
+    },
     "files": [
         "index.js",
         "lib/cli.js",
