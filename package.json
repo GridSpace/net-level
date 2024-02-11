@@ -1,6 +1,6 @@
 {
     "name": "@gridspace/net-level",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "shared, authenticated network access to leveldb",
     "author": "Stewart Allen <sa@grid.space>",
     "license": "MIT",
@@ -32,7 +32,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/gridspace/net-level.git"
+        "url": "git+https://github.com/gridspace/net-level.git"
     },
     "keywords": [
         "network",
