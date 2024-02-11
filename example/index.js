@@ -7,8 +7,8 @@ import dotenv from 'dotenv';
 import http from 'http';
 
 const args = minimist(process.argv.slice(2), {
-  default: { port: 8880 },
-  alias: { p: 'port' }
+    default: { port: 8880 },
+    alias: { p: 'port' }
 });
 
 netLevel.setArgs(args);
@@ -28,9 +28,9 @@ const server = http.Server(app);
 startServer(server).catch((err) => console.log(err));
 
 async function startServer(server) {
-  server.listen(args.port, () => {
-    const host = server.address().address;
-    const port = server.address().port;
-    console.log({ host, port, date: new Date() });
-  });
+    server.listen(args.port, () => {
+        const host = server.address().address;
+        const port = server.address().port;
+        console.log({ host, port, date: new Date() });
+    });
 }
