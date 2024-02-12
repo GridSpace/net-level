@@ -1,17 +1,18 @@
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
+import { TEST_PORT } from '../testConstants';
 
 module.exports = function setup() {
     return new Promise((resolve) => {
-        const child = spawn('lib/server.js', ['--port', '3005']);
+        const child = spawn('lib/server.js', ['--port', TEST_PORT]);
         // eslint-disable-next-line no-undef
         globalThis.__INTEG_TEST_SERVER_PID__ = child.pid;
         child.on('error', (err) => console.log({ err }));
         child.stdout.on('data', function () {
             console.log('[server]', child.pid);
-            resolve();
+            resolve(true);
         });
         child.on('close', function () {
-            console.log('server teardown');
+            console.log('SERVER TEARDOWN', child.pid);
         });
     });
 };

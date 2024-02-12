@@ -50,9 +50,11 @@
         "jest": "^29.7.0",
         "level": "8.0.1",
         "minimist": "1.2.8",
-        "serve-static": "1.15.0"
+        "serve-static": "1.15.0",
+        "ts-jest": "^29.1.2"
     },
     "devDependencies": {
+        "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "6.21.0",
         "@typescript-eslint/parser": "6.21.0",
         "eslint": "8.56.0",
@@ -63,5 +65,35 @@
         "np": "9.2.0",
         "prettier": "3.2.5",
         "prettier-eslint": "16.3.0"
+    },
+    "jest": {
+        "globalSetup": "./tests/config/setup.ts",
+        "globalTeardown": "./tests/config/teardown.js",
+        "testPathIgnorePatterns": [
+            "/node_modules/"
+        ],
+        "testTimeout": 5000,
+        "moduleDirectories": [
+            "node_modules",
+            "lib"
+        ],
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "ts"
+        ],
+        "modulePaths": [
+            "<rootDir>"
+        ],
+        "rootDir": "./",
+        "testRegex": ".*\\.(t|j)s$",
+        "transform": {
+            "^.+\\.ts$": "ts-jest"
+        },
+        "collectCoverageFrom": [
+            "**/*.(t|j)s"
+        ],
+        "coverageDirectory": "../coverage",
+        "testEnvironment": "node"
     }
 }
