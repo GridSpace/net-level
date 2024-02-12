@@ -15,7 +15,8 @@
     "scripts": {
         "doc:publish": "cd documentation && GIT_USER=CourtHive USE_SSH=true yarn deploy",
         "release": "npx np --no-tests",
-        "test": "jest --detectOpenHandles --forceExit "
+        "test": "jest --detectOpenHandles --forceExit ",
+        "coverage": "jest --coverage --detectOpenHandles --forceExit "
     },
     "bin": {
         "net-level-cli": "./lib/cli.js",
@@ -70,7 +71,9 @@
         "globalSetup": "./tests/config/setup.ts",
         "globalTeardown": "./tests/config/teardown.js",
         "testPathIgnorePatterns": [
-            "/node_modules/"
+            "/node_modules/",
+            "/documentation/",
+            "/data/"
         ],
         "testTimeout": 5000,
         "moduleDirectories": [
@@ -86,7 +89,7 @@
             "<rootDir>"
         ],
         "rootDir": "./",
-        "testRegex": ".*\\.(t|j)s$",
+        "testRegex": ".*\\.test.(t|j)s$",
         "transform": {
             "^.+\\.ts$": "ts-jest"
         },
