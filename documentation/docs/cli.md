@@ -26,23 +26,28 @@ The term `base` is used to refer to a data store
 ```shell
 [ grid.space net level client 1.0 ]
 :: help
-auth  [user] [pass]    - authenticate connection with server
-drop  [base]           - drop a database (cannot be in use)
-debug [base] [0|1]     - disable or enable debugging for a data store
-close                  - disconnect client from server
-open  [host] <port>    - connect client to a server
-stat  [cmd]  <opts>    - get server or data store stats (with auth)
-user  [cmd]  <opts>    - get or set user info (with auth)
-use   [base] <opts>    - make data store active (create with auth)
-get   [key]            - fetch key's value from active data store
-put   [key]  [value]   - put key/value pair into active data store
-del   [key]            - delete key's value from active data store
-list  [from] <to>      - list entries in range provided
-cull  [from] <to>      - delete entries in range provided
-keys  [from] <to>      - list only keys in range provided
-count [from] <to>      - count entries in range provided
-limit [count]          - limit range queries to [count] max entries
-help  [command]        - command help
+auth   [user]  [pass]   - authenticate connection with server
+drop   [base]           - drop a database (cannot be in use)
+debug  [base]  [0|1]    - disable or enable debugging for a data store
+open   [host]  <port>   - connect client to a network server
+close                   - disconnect client from network server
+stat   [cmd]   <opts>   - get server or data store stats (with auth)
+user   [cmd]   <opts>   - get or set user info (with auth)
+use    [base]  <opts>   - make data store active (create with auth)
+sub    [path]           - navigate to a database sublevel
+get    [key]            - fetch key's value from active data store
+put    [key]   [value]  - put key/value pair into active data store
+del    [key]            - delete key's value from active data store
+list   [from]  <to>     - list entries in range provided (capped by limit)
+more                    - next [limit] entries from last list
+clear  <opts>           - delete entries in range provided
+cull   [from]  <to>     - delete entries in range provided
+keys   [from]  <to>     - list keys in range provided (capped by limit)
+count  [from]  <to>     - count entries in range provided
+limit  [count]          - limit range queries to [count] max entries
+dump   <opts>           - dump base to file with optional <opts>
+load   [file]           - load values from dump [file] into current base
+help   [command]        - command help
 ```
 
 ## Create a Data Store
