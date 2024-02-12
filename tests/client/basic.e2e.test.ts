@@ -14,9 +14,9 @@ describe('test harness for net-level-client', () => {
     });
 
     test('future use', async () => {
-        await db.put('foo', 'boo');
+        await db.put('foo', 'bar');
         const result = await db.get('foo');
-        expect(result).toEqual('boo');
+        expect(result).toEqual('bar');
     });
 
     test('future use', async () => {
