@@ -62,11 +62,15 @@ describe('test harness for net-level-client', () => {
         expect(result?.length).toEqual(11);
     });
 
-    test('limit/list', async () => {
+    test('list/limit/more/range', async () => {
         const r1 = await client.list({ limit: 3 });
         expect(r1?.length).toEqual(3);
-        const r2 = await client.list({ gte: '003', lte: '006' });
-        expect(r2?.length).toEqual(4);
+        expect(r1[0].key).toEqual('000');
+        const r2 = await client.more();
+        expect(r2?.length).toEqual(3);
+        expect(r2[0].key).toEqual('003');
+        const r3 = await client.list({ gte: '003', lte: '006' });
+        expect(r3?.length).toEqual(4);
     });
 
     test('del/get', async () => {
@@ -112,12 +116,20 @@ describe('test harness for net-level-client', () => {
         await client.auth('admin', 'adminpass');
     });
 
+    test('user del', async () => {
+        const u1 = await client.user('list');
+        expect(u1?.length).toEqual(2);
+        await client.user('del', 'sky');
+        const u2 = await client.user('list');
+        expect(u2?.length).toEqual(1);
+    });
+
     test('drop', async () => {
         await client.use();
         await client.drop(TEST_BASE);
     });
 
-    test('stat', async () => {
+    test('stat after drop', async () => {
         const reply = await client.stat();
         expect(reply.list?.length === 0);
         expect(reply.open?.length === 0);
