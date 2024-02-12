@@ -27,9 +27,8 @@ describe('test harness for net-level-client', () => {
 
     test('auth stat ok', async () => {
         const reply = await client.stat();
-        expect(reply.stat);
-        expect(reply.stat?.list?.length).toEqual(0);
-        expect(reply.stat?.open?.length).toEqual(0);
+        expect(reply.list?.length).toEqual(0);
+        expect(reply.open?.length).toEqual(0);
     });
 
     test('use', async () => {
@@ -38,11 +37,10 @@ describe('test harness for net-level-client', () => {
 
     test('use stat ok', async () => {
         const reply = await client.stat();
-        expect(reply.stat);
-        expect(reply.stat?.list?.length).toEqual(1)
-        expect(reply.stat?.open?.length).toEqual(1)
-        expect(reply.stat?.list[0]).toEqual(TEST_BASE);
-        expect(reply.stat?.open[0]).toEqual(TEST_BASE);
+        expect(reply.list?.length).toEqual(1)
+        expect(reply.open?.length).toEqual(1)
+        expect(reply.list[0]).toEqual(TEST_BASE);
+        expect(reply.open[0]).toEqual(TEST_BASE);
     });
 
     test('get', async () => {
@@ -101,6 +99,19 @@ describe('test harness for net-level-client', () => {
         expect(r3?.length).toEqual(10);
     });
 
+    test('add user/auth', async () => {
+        await client.user("add", "sky", { pass: "blue" });
+        await client.auth("sky", "blue");
+        const user = await client.user("list", "sky");
+        expect(user.perms?.halt).toEqual(false);
+        const keys = await client.keys();
+        expect(keys?.length).toEqual(10);
+    });
+
+    test('re-auth admin', async () => {
+        await client.auth('admin', 'adminpass');
+    });
+
     test('drop', async () => {
         await client.use();
         await client.drop(TEST_BASE);
@@ -108,9 +119,8 @@ describe('test harness for net-level-client', () => {
 
     test('stat', async () => {
         const reply = await client.stat();
-        expect(reply.stat);
-        expect(reply.stat?.list?.length === 0);
-        expect(reply.stat?.open?.length === 0);
+        expect(reply.list?.length === 0);
+        expect(reply.open?.length === 0);
     });
 
     test('close', async () => {
