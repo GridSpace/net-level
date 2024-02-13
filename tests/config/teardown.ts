@@ -7,6 +7,5 @@ module.exports = function teardown() {
     } catch (error) {
         console.log({ teardown_error: error });
     }
-    // this SHOULD come from testConstants, but we can't import here (yet)
     require('fs-extra').remove(TEST_DDIR);
 };
