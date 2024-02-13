@@ -1,6 +1,6 @@
 {
     "name": "@gridspace/net-level",
-    "version": "0.2.3",
+    "version": "0.2.4-0",
     "description": "shared, authenticated network access to leveldb",
     "author": "Stewart Allen <sa@grid.space>",
     "license": "MIT",
