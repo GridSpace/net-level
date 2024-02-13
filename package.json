@@ -72,7 +72,7 @@
     },
     "jest": {
         "globalSetup": "./tests/config/setup.ts",
-        "globalTeardown": "./tests/config/teardown.js",
+        "globalTeardown": "./tests/config/teardown.ts",
         "testPathIgnorePatterns": [
             "<rootDir>/example"
         ],
