@@ -1,0 +1,89 @@
+body, div {
+    gap: 5px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#head {
+    padding: 20px;
+    background-color: #ddd;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+#head div {
+    align-items: center;
+    flex-direction: row;
+}
+
+#stats {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal {
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.labelvalue {
+    align-items: center;
+    flex-direction: row;
+}
+
+.labelvalue > label {
+    flex-direction: row;
+}
+.labelvalue > input {
+    text-align: center;
+}
+
+.auth {
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #ddd;
+}
+
+.auth > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.auth .content {
+    gap: 5px;
+    display: grid;
+    background-color: #eee;
+    grid-template-columns: auto 1fr;
+}
+
+.auth .title {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.auth .buttons {
+    border-top: 1px solid black;
+}
