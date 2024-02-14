@@ -17,7 +17,8 @@
         "release": "npx np --no-tests",
         "test": "jest --detectOpenHandles --forceExit ",
         "coverage": "jest --coverage --detectOpenHandles --forceExit ",
-        "report": "http-server -o coverage/lcov-report"
+        "report": "http-server -o coverage/lcov-report",
+        "web": "http-server -o web"
     },
     "bin": {
         "net-level-cli": "./lib/cli.js",
