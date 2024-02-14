@@ -5,6 +5,7 @@ package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
-data
-scratch
 coverage
+scratch
+data
+dist
