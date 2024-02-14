@@ -9,6 +9,9 @@
     "np": {
         "contents": "."
     },
+    "engines": {
+        "node": ">=20.10.0 < 21"
+    },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
