@@ -69,7 +69,6 @@ async function update_users() {
 }
 
 function show_user(user, rec) {
-    console.log({ user, ...rec });
     const { perms, base } = rec;
     const plist = Object.keys(perms).sort().map(perm => h.div([
         h.input({
@@ -127,7 +126,6 @@ async function update_bases(list, open) {
 }
 
 function show_base(bstat) {
-    console.log({ bstat });
     h.bind('base-edit', h.div([
         h.label('created'),
         h.label(dayjs(bstat.ctime).format('YY/MM/DD HH:mm'))
