@@ -1,5 +1,7 @@
 (function() {
 
+let nextid = 1;
+
 function build(data, context) {
     if (!data) {
         return [];
@@ -66,6 +68,7 @@ function build(data, context) {
 // core html builder funtions
 const h = {
     bind: (el, data, opt = {}) => {
+        typeof(el) === 'string' && (el = $(el));
         let ctx = [];
         let html = build(data, ctx).join('');
         if (opt.append) {
