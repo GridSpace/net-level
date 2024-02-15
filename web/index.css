@@ -87,3 +87,59 @@ body {
 .auth .buttons {
     border-top: 1px solid black;
 }
+
+#app {
+    gap: 5px;
+    padding: 0;
+    flex-direction: row;
+}
+
+#app > div {
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#bases {
+    border-left: 0 !important;
+}
+
+#users {
+    border-right: 0 !important;
+}
+
+#app .list {
+    border-right: 1px solid black;
+    padding-right: 5px;
+    min-height: 250px;
+}
+
+#app .list label {
+    padding: 5px;
+    min-width: 50px;
+    border-radius: 3px;
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+#app .list label.open {
+    background-color: #ccf !important;
+}
+
+#app .list label:hover {
+    background-color: #ddd !important;
+    border: 1px solid rgba(0,0,0,0.25);
+}
+
+#app > div > label {
+    padding: 5px;
+    text-align: center;
+    background-color: #cec;
+    border-radius: 3px;
+}
+
+#app .items {
+    flex-direction: row;
+}

@@ -48,7 +48,38 @@ async function init_client(ws) {
     // await client.put('abc', Date.now()).then((put) => console.log({ put }));
     // await client.list().then((list) => console.log({ list }));
     const { user, pass } = localStorage;
-    auth_do(user, pass);
+    auth_do(user || '', pass || '');
+}
+
+async function update_users() {
+    const users = await state.client.user('list');
+    const bind = h.bind($('user-list'), users.map(user => h.label({ _: user, id: `user_${user}` })));
+    for (let user of users) {
+        bind[`user_${user}`].onclick = () => {
+            state.client.user("list", user).then(rec => show_user(user, rec));
+        };
+    }
+}
+
+function show_user(user, rec) {
+    console.log({ user, ...rec });
+}
+
+async function update_bases(list, open) {
+    const bind = h.bind($('base-list'), list.map(base => h.label({
+        _: base,
+        id: `base_${base}`,
+        class: open.indexOf(base) >= 0 ? 'open' : ''
+    })));
+    for (let base of list) {
+        bind[`base_${base}`].onclick = () => {
+            state.client.stat({ name: base }).then(bstat => show_base(bstat));
+        };
+    }
+}
+
+function show_base(bstat) {
+    console.log({ bstat });
 }
 
 async function update_stat() {
@@ -77,6 +108,10 @@ async function update_stat() {
             h.input({ value: dayjs(mark || 0).format('YY/MM/DD HH:mm'), size: 18, disabled: true })
         ], { class: "labelvalue" }),
     ]);
+    if (list) {
+        update_bases(list, open);
+        update_users();
+    }
     const bind = h.bind($('login'), [
         h.div([
             h.label("IAM"),
