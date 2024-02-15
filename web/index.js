@@ -43,10 +43,6 @@ async function init_client(ws) {
         }
     });
     state.client = client;
-    // await client.auth('admin', 'admin').then((auth) => console.log({ auth }));
-    // await client.use('foo').then((use) => console.log({ use }));
-    // await client.put('abc', Date.now()).then((put) => console.log({ put }));
-    // await client.list().then((list) => console.log({ list }));
     const { user, pass } = localStorage;
     auth_do(user || '', pass || '');
 }
@@ -63,6 +59,11 @@ async function update_users() {
 
 function show_user(user, rec) {
     console.log({ user, ...rec });
+    const { perms, base } = rec;
+    h.bind($('user-perm'), Object.keys(perms).map(perm => h.div([
+        h.input({ type: 'checkbox', [perms[perm] ? 'checked' : '']: true }),
+        h.label(perm),
+    ])));
 }
 
 async function update_bases(list, open) {
@@ -80,6 +81,10 @@ async function update_bases(list, open) {
 
 function show_base(bstat) {
     console.log({ bstat });
+    h.bind($('base-edit'), h.div([
+        h.label('created'),
+        h.label(dayjs(bstat.ctime).format('YY/MM/DD HH:mm'))
+    ]));
 }
 
 async function update_stat() {
