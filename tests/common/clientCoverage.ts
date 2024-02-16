@@ -24,7 +24,7 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
     });
 
     test('use', async () => {
-        await client.use(TEST_BASE);
+        await client.use(TEST_BASE, { create: true });
     });
 
     test('use stat ok', async () => {
