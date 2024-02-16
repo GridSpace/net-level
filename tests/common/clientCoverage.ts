@@ -23,7 +23,13 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
         expect(reply.open?.length).toEqual(0);
     });
 
-    test('use', async () => {
+    test('use-create-false', async () => {
+        await client.use(TEST_BASE).catch(error => {
+            expect(error.indexOf('missing')).toBeGreaterThan(0);
+        });
+    });
+
+    test('use-create-true', async () => {
         await client.use(TEST_BASE, { create: true });
     });
 
@@ -98,8 +104,10 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
     test('add user/auth', async () => {
         await client.user('add', 'sky', { pass: 'blue' });
         await client.auth('sky', 'blue');
-        const user = await client.user('list', 'sky');
-        expect(user.perms?.halt).toEqual(false);
+        const list = await client.user('list', 'sky').catch(error => {
+            expect(error).toEqual('not permitted');
+        });
+        expect(list).toEqual(undefined);
         const keys = await client.keys();
         expect(keys?.length).toEqual(10);
     });
