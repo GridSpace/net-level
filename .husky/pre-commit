@@ -1,5 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm lint:staged
-if [ $(git rev-parse --abbrev-ref HEAD) = 'master' ]; then pnpm test; else echo 'Skipping pre-push hook for non-master branch'; fi
+
+if [ $(git rev-parse --abbrev-ref HEAD) == 'master' ]; then
+	pnpm lint:staged
+	pnpm test
+else
+	echo 'Skipping pre-push hook for non-master branch'
+fi
