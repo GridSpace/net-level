@@ -83,7 +83,7 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
             await client.put(i.toString().padStart(3, '0'), i);
         }
         const r1 = await client.get('003');
-        expect(r1).toEqual('3');
+        expect(r1).toEqual(3);
         const r2 = await client.list();
         expect(r2?.length).toEqual(10);
         await client.sub(['/']);
