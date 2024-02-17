@@ -139,7 +139,12 @@ async function update_bases(list, open) {
 }
 
 function show_base(bstat) {
-    h.bind('base-edit', h.div([h.label('created'), h.label(dayjs(bstat.ctime).format('YY/MM/DD HH:mm'))]));
+    h.bind('base-edit', h.div([
+        h.label('created'),
+        h.label(dayjs(bstat.created).format('YY/MM/DD HH:mm')),
+        h.label('creator'),
+        h.label(bstat.creator),
+    ]));
 }
 
 async function update_stat() {

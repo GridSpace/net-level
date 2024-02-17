@@ -161,3 +161,7 @@ body {
     flex-direction: row;
 }
 
+#base-edit > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
