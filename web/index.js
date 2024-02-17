@@ -64,7 +64,7 @@ async function update_users() {
             _: '+',
             class: 'adder',
             async onclick(ev) {
-                const name = await get_new_user_name();
+                const name = await get_new_name('add user');
                 name && state.client.user('add', name).then(update_users);
             }
         })
@@ -122,28 +122,51 @@ function show_user(user, rec) {
 }
 
 async function update_bases(list, open) {
-    const bind = h.bind(
-        'base-list',
-        list.map((base) =>
-            h.label({
-                _: base,
-                class: open.indexOf(base) >= 0 ? 'open' : '',
-                onclick(ev) {
-                    [...ev.target.parentNode.children].forEach((l) => l.classList.remove('selected'));
-                    ev.target.classList.add('selected');
-                    state.client.stat({ name: base }).then((bstat) => show_base(bstat));
-                }
-            })
-        )
+    const blist = list.map((base) =>
+        h.label({
+            _: base,
+            class: open.indexOf(base) >= 0 ? 'open' : '',
+            onclick(ev) {
+                [...ev.target.parentNode.children].forEach((l) => l.classList.remove('selected'));
+                ev.target.classList.add('selected');
+                state.client.stat({ name: base }).then((bstat) => show_base(base, bstat));
+            }
+        })
     );
+    blist.push(h.label({
+        _: '+',
+        class: 'adder',
+        async onclick(ev) {
+            const name = await get_new_name('add base');
+            name && state.client.use(name, { create: true }).then(() => {
+                state.client.use()
+            }).then(update_stat);
+        }
+    }));
+    const bind = h.bind('base-list', blist);
 }
 
-function show_base(bstat) {
+function show_base(base, bstat) {
     h.bind('base-edit', h.div([
         h.label('created'),
         h.label(dayjs(bstat.created).format('YY/MM/DD HH:mm')),
         h.label('creator'),
         h.label(bstat.creator),
+        ...['gets','dels','puts','iter'].map(k => [ h.label(k), h.label(bstat[k]) ]).flat(),
+        h.label('active'),
+        h.label(bstat.active || 0),
+        h.label('users'),
+        h.label((bstat.users || []).join(',')),
+        ...(bstat.active ? [] :  [
+            h.button({
+                _: 'delete base',
+                onclick() {
+                    if (confirm(`delete base "${base}`)) {
+                        state.client.drop(base).then(update_stat);
+                    }
+                }
+            })
+        ])
     ]));
 }
 
@@ -199,10 +222,10 @@ function auth_check() {
     });
 }
 
-function get_new_user_name() {
+function get_new_name(title) {
     const bind = modal_dialog({
+        title,
         class: 'simple-modal',
-        title: 'add user',
         buttons: ['add', 'cancel'],
         content: [h.label('name'), h.input({ id: 'user', value: '' })]
     });

@@ -18,7 +18,7 @@ function build(data, context) {
         return [ raw ];
     }
     // auto text content
-    if (typeof attr === 'string') {
+    if (typeof attr === 'string' || typeof attr === 'number') {
         attr = { _: attr };
     }
     let elid;
