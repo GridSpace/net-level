@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@gridspace/net-level-client':
-    specifier: 0.2.2
-    version: 0.2.2
+    specifier: 0.2.3
+    version: 0.2.3
   body-parser:
     specifier: 1.20.2
     version: 1.20.2
@@ -29,8 +29,8 @@ dependencies:
 
 packages:
 
-  /@gridspace/net-level-client@0.2.2:
-    resolution: {integrity: sha512-ob/FTc1/Y4uwNXfdcqzIK9LAY5bw0Ca0FgVbbaZMyCRfpREE4+UFALA+DiBmw2pAwM3j0uqSsRZ9bVd5Ta0z5g==}
+  /@gridspace/net-level-client@0.2.3:
+    resolution: {integrity: sha512-4PcKJbMJXnJchj1sEGLbumXtYgZ20SqJoAztOvASgvZDjySWWsAV10SoPSAEbiLdILfKTwl8WpwsxiUu3eATdw==}
     hasBin: true
     dependencies:
       dayjs: 1.11.10
