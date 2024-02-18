@@ -23,8 +23,14 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
         expect(reply.open?.length).toEqual(0);
     });
 
-    test('use', async () => {
-        await client.use(TEST_BASE);
+    test('use-create-false', async () => {
+        await client.use(TEST_BASE).catch(error => {
+            expect(error.indexOf('missing')).toBeGreaterThan(0);
+        });
+    });
+
+    test('use-create-true', async () => {
+        await client.use(TEST_BASE, { create: true });
     });
 
     test('use stat ok', async () => {
@@ -77,7 +83,7 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
             await client.put(i.toString().padStart(3, '0'), i);
         }
         const r1 = await client.get('003');
-        expect(r1).toEqual('3');
+        expect(r1).toEqual(3);
         const r2 = await client.list();
         expect(r2?.length).toEqual(10);
         await client.sub(['/']);
@@ -98,8 +104,10 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
     test('add user/auth', async () => {
         await client.user('add', 'sky', { pass: 'blue' });
         await client.auth('sky', 'blue');
-        const user = await client.user('list', 'sky');
-        expect(user.perms?.halt).toEqual(false);
+        const list = await client.user('list', 'sky').catch(error => {
+            expect(error).toEqual('not permitted');
+        });
+        expect(list).toEqual(undefined);
         const keys = await client.keys();
         expect(keys?.length).toEqual(10);
     });

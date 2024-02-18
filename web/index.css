@@ -1,0 +1,167 @@
+body, div {
+    gap: 5px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#head {
+    padding: 20px;
+    background-color: #ddd;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+#head div {
+    align-items: center;
+    flex-direction: row;
+}
+
+#stats {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal {
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.2);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.labelvalue {
+    align-items: center;
+    flex-direction: row;
+}
+
+.labelvalue > label {
+    flex-direction: row;
+}
+.labelvalue > input {
+    text-align: center;
+}
+
+.simple-modal {
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #ddd;
+}
+
+.simple-modal > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.simple-modal .content {
+    gap: 5px;
+    display: grid;
+    background-color: #eee;
+    grid-template-columns: auto 1fr;
+}
+
+.simple-modal .title {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.simple-modal .buttons {
+    border-top: 1px solid black;
+}
+
+#app {
+    gap: 5px;
+    padding: 0;
+    flex-direction: row;
+}
+
+#app > div {
+    flex-grow: 1;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#bases {
+    border-left: 0 !important;
+}
+
+#users {
+    border-right: 0 !important;
+}
+
+#user-perm > div {
+    flex-direction: row;
+}
+
+#app .list {
+    border-right: 1px solid black;
+    padding-right: 5px;
+    min-height: 250px;
+}
+
+#app .list label {
+    padding: 5px;
+    min-width: 50px;
+    border-radius: 3px;
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+#app .list label.open {
+    background-color: #ccf !important;
+}
+
+#app .list label:hover {
+    background-color: #ddd !important;
+    border: 1px solid rgba(0,0,0,0.25);
+}
+
+#app label.selected {
+    border-color: rgba(255,100,0,0.5) !important;
+}
+
+#app label.adder {
+    text-align: center;
+}
+
+#app > div > label {
+    padding: 5px;
+    text-align: center;
+    background-color: #cec;
+    border-radius: 3px;
+}
+
+#app .items {
+    flex-direction: row;
+}
+
+#user-edit {
+    flex-direction: row;
+}
+
+#base-edit > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
