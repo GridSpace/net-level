@@ -67,7 +67,7 @@
         "eslint-plugin-react": "7.33.2",
         "http-server": "^14.1.1",
         "i": "^0.3.7",
-        "np": "9.2.0",
+        "np": "10.0.0",
         "prettier": "3.2.5",
         "prettier-eslint": "16.3.0"
     },
