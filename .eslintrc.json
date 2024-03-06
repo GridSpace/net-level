@@ -8,12 +8,12 @@
     },
     "parser": "espree",
     "extends": [
-        "plugin:react/recommended",
         "plugin:prettier/recommended",
         "plugin:@typescript-eslint/recommended",
         "eslint:recommended",
         "prettier"
     ],
+    "ignorePatterns": ["node_modules/", "dist/", "coverage/", "scratch/", "server/"],
     "parserOptions": {
         "ecmaVersion": 13,
         "ecmaFeatures": {
@@ -22,8 +22,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "react/prop-types": 0,
-        "react/display-name": 0,
         "no-fallthrough": "off",
         "no-unused-expressions": "off",
         "@typescript-eslint/no-useless-escape": "off",
@@ -36,8 +34,6 @@
         "@typescript-eslint/no-unused-vars": "warn"
     },
     "settings": {
-        "react": {
-            "version": "detect"
-        }
+        "cache": false
     }
 }

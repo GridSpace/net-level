@@ -1,10 +1,13 @@
 ./.env
 .DS_Store
+.eslintcache
 node_modules
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+*.base
 
-data
-scratch
 coverage
+scratch
+data
+dist
