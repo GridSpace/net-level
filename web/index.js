@@ -136,6 +136,7 @@ function show_user(user, rec) {
                     let bperms = base[bname];
                     if (!bperms) {
                         bperms = base[bname] = Object.assign({}, perms);
+                        ["create", "drop", "halt", "user"].forEach(k => delete bperms[k]);
                     }
                     cperms = bperms;
                 }
