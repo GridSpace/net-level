@@ -72,9 +72,8 @@ async function update_users() {
     const bind = h.bind('user-list', ulist);
 }
 
-function show_user(user, rec) {
-    const { perms, base } = rec;
-    const plist = Object.keys(perms)
+function gen_userbase_perms(perms) {
+    return Object.keys(perms)
         .sort()
         .map((perm) =>
             h.div([
@@ -88,15 +87,20 @@ function show_user(user, rec) {
                 }),
                 h.label(perm)
             ])
-        );
+    );
+}
+
+function show_user(user, rec) {
+    let { perms, base } = rec;
     h.bind('user-edit', [
-        h.div(plist, { id: 'user-perm' }),
+        h.div([], { id: 'user-perm' }),
         h.div([
             h.button({
                 disabled: true,
                 id: 'save-changes',
                 _: 'save changes',
                 async onclick() {
+                    if (base) await state.client.user('base', user, base);
                     await state.client.user('perms', user, perms);
                     $('save-changes').disabled = true;
                 }
@@ -119,9 +123,34 @@ function show_user(user, rec) {
             })
         ])
     ]);
+    const blist = ["*", ...state.bases].map((bname) =>
+        h.label({
+            _: bname,
+            id: `ubase_${bname}`,
+            onclick(ev) {
+                let cperms = perms;
+                if (bname !== '*') {
+                    if (!rec.base) {
+                        base = rec.base = {};
+                    }
+                    let bperms = base[bname];
+                    if (!bperms) {
+                        bperms = base[bname] = Object.assign({}, perms);
+                    }
+                    cperms = bperms;
+                }
+                h.bind('user-perm', gen_userbase_perms(cperms));
+                [...ev.target.parentNode.children].forEach((l) => l.classList.remove('selected'));
+                ev.target.classList.add('selected');
+            }
+        })
+    );
+    const bound = h.bind('user-base', blist);
+    bound[`ubase_*`].onclick({ target: bound[`ubase_*`] });
 }
 
 async function update_bases(list, open) {
+    state.bases = list;
     const blist = list.map((base) =>
         h.label({
             _: base,
