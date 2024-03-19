@@ -177,6 +177,20 @@ async function update_bases(list, open) {
 }
 
 function show_base(base, bstat) {
+    const query = h.button({
+        _: 'query range',
+        async onclick() {
+            const { client } = state;
+            await client.use(base);
+            const first = await client.list({ values: false, limit: 1 });
+            const last = await client.list({ reverse: true, values: false, limit: 1 });
+            if (first.length && last.length) {
+                alert(`first key: ${first[0].key}\nlast key: ${last[0].key}`);
+            } else {
+                alert('empty base');
+            }
+        }
+    });
     h.bind('base-edit', h.div([
         h.label('created'),
         h.label(dayjs(bstat.created).format('YY/MM/DD HH:mm')),
@@ -187,7 +201,8 @@ function show_base(base, bstat) {
         h.label(bstat.active || 0),
         h.label('users'),
         h.label((bstat.users || []).join(',')),
-        ...(bstat.active ? [] :  [
+        ...(bstat.active ? [ query ] : [
+            query,
             h.button({
                 _: 'delete base',
                 onclick() {
