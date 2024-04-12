@@ -72,8 +72,9 @@ async function update_users() {
     const bind = h.bind('user-list', ulist);
 }
 
-function gen_userbase_perms(perms) {
-    return Object.keys(perms)
+function show_user(user, rec) {
+    const { perms, base } = rec;
+    const plist = Object.keys(perms)
         .sort()
         .map((perm) =>
             h.div([
@@ -87,20 +88,15 @@ function gen_userbase_perms(perms) {
                 }),
                 h.label(perm)
             ])
-    );
-}
-
-function show_user(user, rec) {
-    let { perms, base } = rec;
+        );
     h.bind('user-edit', [
-        h.div([], { id: 'user-perm' }),
+        h.div(plist, { id: 'user-perm' }),
         h.div([
             h.button({
                 disabled: true,
                 id: 'save-changes',
                 _: 'save changes',
                 async onclick() {
-                    if (base) await state.client.user('base', user, base);
                     await state.client.user('perms', user, perms);
                     $('save-changes').disabled = true;
                 }
@@ -123,35 +119,9 @@ function show_user(user, rec) {
             })
         ])
     ]);
-    const blist = ["*", ...state.bases].map((bname) =>
-        h.label({
-            _: bname,
-            id: `ubase_${bname}`,
-            onclick(ev) {
-                let cperms = perms;
-                if (bname !== '*') {
-                    if (!rec.base) {
-                        base = rec.base = {};
-                    }
-                    let bperms = base[bname];
-                    if (!bperms) {
-                        bperms = base[bname] = Object.assign({}, perms);
-                        ["create", "drop", "halt", "user"].forEach(k => delete bperms[k]);
-                    }
-                    cperms = bperms;
-                }
-                h.bind('user-perm', gen_userbase_perms(cperms));
-                [...ev.target.parentNode.children].forEach((l) => l.classList.remove('selected'));
-                ev.target.classList.add('selected');
-            }
-        })
-    );
-    const bound = h.bind('user-base', blist);
-    bound[`ubase_*`].onclick({ target: bound[`ubase_*`] });
 }
 
 async function update_bases(list, open) {
-    state.bases = list;
     const blist = list.map((base) =>
         h.label({
             _: base,
@@ -177,20 +147,6 @@ async function update_bases(list, open) {
 }
 
 function show_base(base, bstat) {
-    const query = h.button({
-        _: 'query range',
-        async onclick() {
-            const { client } = state;
-            await client.use(base);
-            const first = await client.list({ values: false, limit: 1 });
-            const last = await client.list({ reverse: true, values: false, limit: 1 });
-            if (first.length && last.length) {
-                alert(`first key: ${first[0].key}\nlast key: ${last[0].key}`);
-            } else {
-                alert('empty base');
-            }
-        }
-    });
     h.bind('base-edit', h.div([
         h.label('created'),
         h.label(dayjs(bstat.created).format('YY/MM/DD HH:mm')),
@@ -201,8 +157,7 @@ function show_base(base, bstat) {
         h.label(bstat.active || 0),
         h.label('users'),
         h.label((bstat.users || []).join(',')),
-        ...(bstat.active ? [ query ] : [
-            query,
+        ...(bstat.active ? [] :  [
             h.button({
                 _: 'delete base',
                 onclick() {
