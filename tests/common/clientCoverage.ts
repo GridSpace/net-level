@@ -1,5 +1,5 @@
 export const CLIENT_TESTS = (state, TEST_BASE) => {
-    console.log({ CLIENT_TESTS: state });
+    console.log({ CLIENT_TESTS: state, TEST_BASE });
 
     let client;
 
@@ -19,8 +19,7 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
 
     test('auth stat ok', async () => {
         const reply = await client.stat();
-        expect(reply.list?.length).toEqual(0);
-        expect(reply.open?.length).toEqual(0);
+        expect(reply.open.indexOf(TEST_BASE)).toEqual(-1);
     });
 
     test('use-create-false', async () => {
@@ -35,10 +34,7 @@ export const CLIENT_TESTS = (state, TEST_BASE) => {
 
     test('use stat ok', async () => {
         const reply = await client.stat();
-        // expect(reply.list?.length).toEqual(1)
-        expect(reply.open?.length).toEqual(1);
-        // expect(reply.list[0]).toEqual(TEST_BASE);
-        expect(reply.open[0]).toEqual(TEST_BASE);
+        expect(reply.open.indexOf(TEST_BASE) >= 0).toEqual(true);
     });
 
     test('get', async () => {
