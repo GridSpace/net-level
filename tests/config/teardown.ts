@@ -1,6 +1,7 @@
 import { TEST_DDIR } from '../testConstants';
 
 module.exports = function teardown() {
+    console.log({ TEARDOWN: TEST_DDIR });
     // eslint-disable-next-line no-undef
     try {
         process.kill(globalThis.__INTEG_TEST_SERVER_PID__);

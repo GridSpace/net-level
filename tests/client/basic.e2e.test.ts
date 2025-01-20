@@ -5,7 +5,7 @@ import netLevelClient from 'lib/client.js';
 
 describe('test harness for net-level-client', () => {
     const client = new netLevelClient();
-
+    console.log({ e2e: TEST_PORT });
     test('open', async () => {
         await client.open('localhost', TEST_PORT);
     });
