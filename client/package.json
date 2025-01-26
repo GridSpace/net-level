@@ -43,6 +43,6 @@
         "minimist": "1.2.8"
     },
     "devDependencies": {
-        "np": "10.0.3"
+        "np": "10.2.0"
     }
 }
