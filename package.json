@@ -1,16 +1,16 @@
 {
     "name": "@gridspace/net-level",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "description": "shared, authenticated network access to leveldb",
     "author": "Stewart Allen <sa@grid.space>",
     "license": "MIT",
     "private": false,
-    "main": "lib/index.js",
+    "main": "index.js",
     "np": {
         "contents": "."
     },
     "engines": {
-        "node": ">=20.10.0 < 21"
+        "node": ">=20.10.0"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
