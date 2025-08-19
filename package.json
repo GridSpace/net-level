@@ -58,7 +58,7 @@
         "fs-extra": "^11.2.0",
         "level": "8.0.1",
         "minimist": "1.2.8",
-        "serve-static": "1.15.0",
+        "serve-static": "1.16.0",
         "ts-jest": "^29.1.2",
         "ws": "^8.16.0"
     },
