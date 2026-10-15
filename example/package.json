@@ -14,7 +14,7 @@
     "dependencies": {
         "@gridspace/net-level-client": "0.2.3",
         "body-parser": "1.20.2",
-        "compression": "1.7.4",
+        "compression": "1.8.2",
         "dotenv": "16.4.5",
         "esm": "3.2.25",
         "express": "4.19.2",
